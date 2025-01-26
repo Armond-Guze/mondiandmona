@@ -12,14 +12,14 @@ const Navbar = () => {
     <nav className="bg-red-500 text-white p-6 border-blue-600">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
-        <div className="text-2xl font-bold cursor-pointer text-[32px]">M&M Adventures</div>
+        <div className="text-2xl font-bold cursor-pointer text-[32px] hover:text-red-700">Mondi&Mona</div>
 
         {/* Links (Desktop) */}
         <ul className="hidden md:flex space-x-6 font-bold text-[20px]">
-          <a href="#" className="hover:text-blue-300 ">Home</a>
-          <a href="#" className="hover:text-blue-300">About</a>
-          <a href="#" className="hover:text-blue-300">Services</a>
-          <a href="#" className="hover:text-blue-300">Contact</a>
+          <a href="#" className="hover:text-red-700">Home</a>
+          <a href="#" className="hover:text-red-700">About</a>
+          <a href="#" className="hover:text-red-700">Services</a>
+          <a href="#" className="hover:text-red-700">Contact</a>
         </ul>
 
         {/* Toggle Button (Mobile) */}
@@ -34,11 +34,11 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-blue-500">
-          <a href="#" className="block py-2 px-4 hover:bg-blue-700">Home</a>
-          <a href="#" className="block py-2 px-4 hover:bg-blue-700">About</a>
-          <a href="#" className="block py-2 px-4 hover:bg-blue-700">Services</a>
-          <a href="#" className="block py-2 px-4 hover:bg-blue-700">Contact</a>
+        <div className="md:hidden bg-red-500">
+          <a href="#" className="block py-2 px-4 hover:bg-red-700">Home</a>
+          <a href="#" className="block py-2 px-4 hover:bg-red-700">About</a>
+          <a href="#" className="block py-2 px-4 hover:bg-red-700">Services</a>
+          <a href="#" className="block py-2 px-4 hover:bg-red-700">Contact</a>
         </div>
       )}
     </nav>
