@@ -9,18 +9,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-600 text-white">
+    <nav className="bg-red-500 text-white p-6 border-blue-600">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
-        <div className="text-2xl font-bold">MyLogo</div>
+        <div className="text-2xl font-bold cursor-pointer text-[32px]">M&M Adventures</div>
 
         {/* Links (Desktop) */}
-        <div className="hidden md:flex space-x-6">
-          <a href="#" className="hover:text-blue-300">Home</a>
+        <ul className="hidden md:flex space-x-6 font-bold text-[20px]">
+          <a href="#" className="hover:text-blue-300 ">Home</a>
           <a href="#" className="hover:text-blue-300">About</a>
           <a href="#" className="hover:text-blue-300">Services</a>
           <a href="#" className="hover:text-blue-300">Contact</a>
-        </div>
+        </ul>
 
         {/* Toggle Button (Mobile) */}
         <div className="md:hidden">
