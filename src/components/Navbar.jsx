@@ -1,46 +1,21 @@
 // src/components/Navbar.jsx
-import React, { useState } from 'react';
+import React from 'react';
 
+// Simplified, cute navbar just showing the project name
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <nav className="bg-red-500 text-white p-6 border-blue-600">
+    <nav className="backdrop-blur bg-pink-300/70 shadow-sm border-b border-pink-200">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        {/* Logo */}
-        <div className="text-2xl font-bold cursor-pointer text-[32px] hover:text-red-700">Mondi&Mona</div>
-
-        {/* Links (Desktop) */}
-        <ul className="hidden md:flex space-x-6 font-bold text-[20px]">
-          <a href="#" className="hover:text-red-700">Home</a>
-          <a href="#" className="hover:text-red-700">About</a>
-          <a href="#" className="hover:text-red-700">Services</a>
-          <a href="#" className="hover:text-red-700">Contact</a>
-        </ul>
-
-        {/* Toggle Button (Mobile) */}
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="focus:outline-none">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
-            </svg>
-          </button>
+        <div className="flex items-center gap-3">
+          <img src="/heart.svg" alt="heart" className="w-8 h-8 drop-shadow" />
+          <div className="text-4xl md:text-5xl font-script text-pink-700 drop-shadow-sm select-none">
+            Armond & Mona
+          </div>
+        </div>
+        <div className="hidden sm:block text-xs md:text-sm text-pink-600 font-medium italic">
+          me and pookie pookie and me💕
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-red-500">
-          <a href="#" className="block py-2 px-4 hover:bg-red-700">Home</a>
-          <a href="#" className="block py-2 px-4 hover:bg-red-700">About</a>
-          <a href="#" className="block py-2 px-4 hover:bg-red-700">Services</a>
-          <a href="#" className="block py-2 px-4 hover:bg-red-700">Contact</a>
-        </div>
-      )}
     </nav>
   );
 };

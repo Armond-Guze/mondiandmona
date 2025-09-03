@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes floatSlow {
+	0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+	50% { transform: translateY(-40px) translateX(10px) rotate(6deg); }
+	100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+
+.animate-float {
+	animation: floatSlow 14s ease-in-out infinite;
+}
+
+/* Script font class */
+.font-script { font-family: 'Great Vibes', cursive; }
+
+/* Heart cursor */
+body { cursor: url('/heart.svg') 16 16, pointer; }
+
+/* Custom minimal audio player wrapper */
+.love-audio::-webkit-media-controls-panel { background: linear-gradient(to right, #f9a8d4, #fbcfe8); }
+.love-audio { filter: drop-shadow(0 4px 8px rgba(236,72,153,0.25)); border-radius: 9999px; }
