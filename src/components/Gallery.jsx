@@ -3,26 +3,49 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 // Local storage key
 const LS_KEY = 'mondi_mona_gallery_v1';
 
-// Utility to read file -> data URL
+// Utility to read file -> data URL and normalize orientation/size via canvas
 const fileToDataUrl = (file) => new Promise((resolve, reject) => {
   const reader = new FileReader();
-  reader.onload = () => resolve(reader.result);
   reader.onerror = reject;
+  reader.onload = () => {
+    const src = reader.result;
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        // Scale down very large images to improve memory/perf
+        const maxSide = 1600;
+        let { width, height } = img;
+        const scale = Math.min(1, maxSide / Math.max(width, height));
+        width = Math.round(width * scale);
+        height = Math.round(height * scale);
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', 0.9));
+      } catch {
+        resolve(src);
+      }
+    };
+    img.onerror = () => resolve(src);
+    img.src = src;
+  };
   reader.readAsDataURL(file);
 });
 
 const DecorativeHearts = () => (
   <div className="pointer-events-none absolute inset-0 overflow-hidden [mask-image:radial-gradient(circle_at_center,black,transparent)]">
-  {Array.from({ length: 40 }).map((_, i) => (
+  {Array.from({ length: 14 }).map((_, i) => (
       <div
         key={i}
-        className="absolute text-pink-300/30 animate-float"
+        className="absolute text-pink-300/20 animate-float"
         style={{
           top: `${Math.random() * 100}%`,
           left: `${Math.random() * 100}%`,
-          fontSize: `${Math.random() * 24 + 12}px`,
-          animationDelay: `${Math.random() * 6}s`,
-          animationDuration: `${10 + Math.random() * 10}s`
+          fontSize: `${Math.random() * 18 + 10}px`,
+          animationDelay: `${Math.random() * 4}s`,
+          animationDuration: `${12 + Math.random() * 10}s`
         }}
       >
         ❤
@@ -152,7 +175,7 @@ const Gallery = () => {
         </div>
 
         {/* Gallery grid */}
-        <div className="mt-12 grid gap-6 sm:gap-7 md:gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 sm:gap-5 md:gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
           {photos.map(photo => (
             <figure
               key={photo.id}
@@ -161,7 +184,7 @@ const Gallery = () => {
               <img
                 src={photo.dataUrl}
                 alt={photo.note || photo.name}
-                className="w-full h-40 sm:h-44 md:h-48 object-cover object-center transition-transform group-hover:scale-105"
+                className="w-full aspect-square object-cover object-center transition-transform group-hover:scale-105"
                 loading="lazy"
               />
               <figcaption className="p-3">

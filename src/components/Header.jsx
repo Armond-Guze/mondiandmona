@@ -6,16 +6,16 @@ const Header = () => {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-10 -left-10 w-72 h-72 bg-pink-300/40 rounded-full blur-3xl animate-pulse" />
         <div className="absolute top-1/2 -right-10 w-80 h-80 bg-pink-400/30 rounded-full blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
-  {Array.from({length:22}).map((_,i)=>(
+  {Array.from({length:10}).map((_,i)=>(
           <div
             key={i}
-            className="absolute text-pink-300/40 animate-float"
+            className="absolute text-pink-300/30 animate-float"
             style={{
               top: `${Math.random()*100}%`,
               left: `${Math.random()*100}%`,
-              fontSize: `${Math.random()*28+10}px`,
-              animationDelay: `${Math.random()*8}s`,
-              animationDuration: `${12+Math.random()*12}s`
+              fontSize: `${Math.random()*22+10}px`,
+              animationDelay: `${Math.random()*6}s`,
+              animationDuration: `${12+Math.random()*10}s`
             }}
           >❤</div>
         ))}
