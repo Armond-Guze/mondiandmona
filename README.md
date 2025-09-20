@@ -1,8 +1,50 @@
-# React + Vite
+# Mondi & Mona Adventures
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite site deployed to **GitHub Pages**.
 
-Currently, two official plugins are available:
+## Local Dev
+```
+npm install
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Production Build
+```
+npm run build
+npm run preview
+```
+
+## Deployment
+Deployment is automatic via GitHub Actions on every push to `main`.
+
+Workflow: `.github/workflows/deploy.yml`
+
+Vite `base` is set in `vite.config.js` to `/mondiandmona/` so assets resolve correctly at:
+```
+https://<your-username>.github.io/mondiandmona/
+```
+
+If you fork/rename:
+1. Update `base` in `vite.config.js` to `/<new-repo-name>/` (or `'/'` for a user/organization root page repo named `<user>.github.io`).
+2. Push a commit to trigger the workflow.
+
+## Customize
+Global HTML: `index.html`
+Entry: `src/main.jsx`
+App Root: `src/App.jsx`
+Components: `src/components/*`
+Styles: `src/index.css` (Tailwind enabled)
+
+## Lint
+```
+npm run lint
+```
+
+## Tech Stack
+- React 18
+- Vite
+- Tailwind CSS
+- GitHub Pages (Actions deploy)
+
+---
+Feel free to add more content & sections as the project grows.
