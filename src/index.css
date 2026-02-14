@@ -2,22 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes floatSlow {
-	0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-	50% { transform: translateY(-40px) translateX(10px) rotate(6deg); }
-	100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+.happy-background {
+  background: linear-gradient(125deg, #ffe4e6, #fef3c7, #dcfce7, #dbeafe);
+  background-size: 280% 280%;
+  animation: happyGradient 8s ease infinite;
 }
 
-.animate-float {
-	animation: floatSlow 14s ease-in-out infinite;
+.confetti-piece {
+  position: absolute;
+  top: -15vh;
+  border-radius: 2px;
+  animation-name: confettiFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
-/* Script font class */
-.font-script { font-family: 'Great Vibes', cursive; }
+.floating-shape {
+  position: absolute;
+  bottom: -20vh;
+  border-radius: 9999px;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
 
-/* Heart cursor */
-body { cursor: url('/heart.svg') 16 16, pointer; }
+@keyframes happyGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
-/* Custom minimal audio player wrapper */
-.love-audio::-webkit-media-controls-panel { background: linear-gradient(to right, #f9a8d4, #fbcfe8); }
-.love-audio { filter: drop-shadow(0 4px 8px rgba(236,72,153,0.25)); border-radius: 9999px; }
+@keyframes confettiFall {
+  0% {
+    transform: translate3d(0, -20vh, 0) rotate(var(--confetti-start-rotate));
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--confetti-drift), 110vh, 0)
+      rotate(calc(var(--confetti-start-rotate) + 540deg));
+    opacity: 0;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(10vh) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.25);
+    opacity: 0;
+  }
+}
